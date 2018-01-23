@@ -7,7 +7,7 @@ proteinLocsToProteinSeq <-
     }   
     genomicLoci=proteinLocsToGenomic(inputLoci=inputLoci, CDSaaFile=CDSaaFile)
     
-    proteinSeq = genomicLocToProteinSequence(inputLoci=genomicLoci, 
+    proteinSeq = genomicLocsToProteinSequence(inputLoci=genomicLoci, 
                         CDSaaFile=CDSaaFile)
 
     idCol =  as.character(proteinSeq[,7])

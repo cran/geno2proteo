@@ -1,5 +1,5 @@
-\name{genomicLocToWholeDNASequence}
-\alias{genomicLocToWholeDNASequence}
+\name{genomicLocsToWholeDNASequence}
+\alias{genomicLocsToWholeDNASequence}
 \title{
 Obtaining the DNA sequences of a list of genomic loci
 }
@@ -8,7 +8,7 @@ The function takes a list of genomic loci and tries to find the whole DNA
 sequences within each of the loci.
 }
 \usage{
-genomicLocToWholeDNASequence(inputLoci, DNAfastaFile, 
+genomicLocsToWholeDNASequence(inputLoci, DNAfastaFile, 
                                 tempFolder = "./", perlExec='perl')
 }
 \arguments{
@@ -64,9 +64,11 @@ Yaoyong Li
         "Homo_sapiens.GRCh37.74.dna.chromosome.16.fa_theFirst3p5M.txt.gz")
 
     inputLoci = read.table(inputFile_loci, sep="\t", stringsAsFactors=FALSE)
+    
+    tmpFolder = tempdir()
 
-    DNASeqNow = genomicLocToWholeDNASequence(inputLoci=inputLoci, 
-                                                DNAfastaFile=DNAfastaFile)
+    DNASeqNow = genomicLocsToWholeDNASequence(inputLoci=inputLoci, 
+                            DNAfastaFile=DNAfastaFile, tempFolder=tmpFolder)
 
 }
 

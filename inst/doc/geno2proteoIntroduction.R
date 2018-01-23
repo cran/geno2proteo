@@ -25,13 +25,15 @@ gtfFile_chr16 = file.path(dataFolder,
 DNAfastaFile_chr16 =  file.path(dataFolder, 
 "Homo_sapiens.GRCh37.74.dna.chromosome.16.fa_theFirst3p5M.txt.gz");
 
+tmpFolder = tempdir();
+
 generatingCDSaaFile(geneticCodeFile_line=geneticCodeFile, 
 gtfFile=gtfFile_chr16, DNAfastaFile=DNAfastaFile_chr16, 
-outputFolder="./", perlExec="perl")
+outputFolder=tmpFolder, perlExec="perl")
 
 
 ###################################################
-### code chunk number 4: example_genomicLocToProteinSequence
+### code chunk number 4: example_genomicLocsToProteinSequence
 ###################################################
 library(geno2proteo)
 
@@ -47,7 +49,7 @@ inputLoci = read.table(inputFile_loci, sep='\t', stringsAsFactors=FALSE,
     header=TRUE)
 inputLoci = inputLoci[,1:4] # here just use the first 4 columns of input data. 
 # But the input data can have as many extra columns as you like.
-proteinSeq = genomicLocToProteinSequence(inputLoci=inputLoci, 
+proteinSeq = genomicLocsToProteinSequence(inputLoci=inputLoci, 
 CDSaaFile=CDSaaFile)
 # the 1st and 5th genomic loci in the input
 inputLoci[c(1,5),] 
@@ -57,7 +59,7 @@ proteinSeq[c(1,5),]
 
 
 ###################################################
-### code chunk number 5: example_genomicLocToWholeDNASequence
+### code chunk number 5: example_genomicLocsToWholeDNASequence
 ###################################################
 library(geno2proteo)
 
@@ -71,8 +73,9 @@ inputLoci = read.table(inputFile_loci, sep='\t', stringsAsFactors=FALSE,
     header=TRUE)
 inputLoci = inputLoci[,1:4] # here just use the first 4 columns of input data. 
 # But the input data can have as many extra columns as you like.
-DNASeqNow = genomicLocToWholeDNASequence(inputLoci=inputLoci, 
-    DNAfastaFile=DNAfastaFile, tempFolder="./", perlExec="perl")
+tmpFolder = tempdir();
+DNASeqNow = genomicLocsToWholeDNASequence(inputLoci=inputLoci, 
+    DNAfastaFile=DNAfastaFile, tempFolder=tmpFolder, perlExec="perl")
 
 inputLoci[c(1,5),] # the 1st and 5th genomic loci in the input
 

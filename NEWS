@@ -1,4 +1,19 @@
-CHANGES IN VERSION 0.99.0
+CHANGES IN VERSION 0.0.2 (23/01/2018)
 -------------------------
-A brand new backage is born.
+1. Changed the function names of the two functions: genomicLocToProteinSequence 
+-> genomicLocsToProteinSequence and genomicLocToWholeDNASequence -> 
+genomicLocsToWholeDNASequence, in order to keep them consistent with other
+function names.
+2. Removed "utils" from the import list in DESCRIPTION file, because it is not
+ used by the package.
+3. Addressed the issue of creating and writting some files in the folders that
+ they should be created, as raised by the CRAN staff, by using the temporary
+ folder obtained by tempdir(). 
 
+-------------------------
+
+VERSION 0.0.1
+
+12/12/2017:the package was accepted and published by CRAN repository.
+September - November 2017: the package was tested and reviewed.
+January - May 2017: the package was written.

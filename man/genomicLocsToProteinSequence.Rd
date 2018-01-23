@@ -1,14 +1,14 @@
-\name{genomicLocToProteinSequence}
-\alias{genomicLocToProteinSequence}
+\name{genomicLocsToProteinSequence}
+\alias{genomicLocsToProteinSequence}
 \title{Obtaining the protein sequences and DNA sequences of the coding regions
 within a list of loci in genome}
 \description{
-\code{genomicLocToProteinSequence} takes a list of genomic loci given in the 
+\code{genomicsLocToProteinSequence} takes a list of genomic loci given in the 
 input and tries to find the protein sequences and DNA sequences of the coding 
 regions of genome which are within those genomic loci.
 }
 \usage{
-genomicLocToProteinSequence(inputLoci, CDSaaFile)
+genomicLocsToProteinSequence(inputLoci, CDSaaFile)
 }
 \arguments{
     \item{inputLoci}{
@@ -62,7 +62,7 @@ Yaoyong Li
 
     inputLoci = read.table(inputFile_loci, sep="\t", stringsAsFactors=FALSE)
 
-    proteinSeq = genomicLocToProteinSequence(inputLoci=inputLoci, 
+    proteinSeq = genomicLocsToProteinSequence(inputLoci=inputLoci, 
                                             CDSaaFile=CDSaaFile)
 
 }

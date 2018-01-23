@@ -1,4 +1,4 @@
-genomicLocToProteinSequence <-
+genomicLocsToProteinSequence <-
     function(inputLoci, CDSaaFile) {
 
     loci_0 = inputLoci

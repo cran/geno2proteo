@@ -9,7 +9,8 @@ test_generatingCDSaaFile <- function() {
     DNAfastaFile =  file.path(dataFolder, 
         "Homo_sapiens.GRCh37.74.dna.chromosome.16.fa_theFirst3p5M.txt.gz");
 
-    outputFolder = dataFolder;
+    # outputFolder = dataFolder;
+    outputFolder = tempdir();
     generatingCDSaaFile(geneticCodeFile_line=geneticCodeFile_line, 
         gtfFile=gtfFile, DNAfastaFile=DNAfastaFile, outputFolder=outputFolder)
     
@@ -36,9 +37,14 @@ test_generatingCDSaaFile <- function() {
     'RWFLYPPEKTPEFHPNKTTLAWLRDTYPALPPSARPLECTIRAGE')
     
     #checkEqualsNumeric(divideBy(4, 1.2345), 3.24, tolerance=1.0e-4)
+    
+    if (file.exists(outputFile)) { 
+        invisible(file.remove(outputFile)) 
+    }
+
 }
 
-test_genomicLocToProteinSequence <- function() {
+test_genomicLocsToProteinSequence <- function() {
 
     dataFolder = system.file("extdata", package="geno2proteo")
     inputFile_loci=file.path(dataFolder, 
@@ -48,7 +54,7 @@ test_genomicLocToProteinSequence <- function() {
 
     inputLoci = read.table(inputFile_loci, sep='\t', 
         stringsAsFactors=F, header=T)
-    proteinSeq = genomicLocToProteinSequence(inputLoci=inputLoci, 
+    proteinSeq = genomicLocsToProteinSequence(inputLoci=inputLoci, 
         CDSaaFile=CDSaaFile)
   
     kkt = sapply(1:nrow(proteinSeq), function(n) {a = proteinSeq[n,]; 
@@ -65,7 +71,7 @@ test_genomicLocToProteinSequence <- function() {
 
 }
 
-test_genomicLocToWholeDNASequence <- function() {
+test_genomicLocsToWholeDNASequence <- function() {
 
     dataFolder = system.file("extdata", package="geno2proteo")
     inputFile_loci=file.path(dataFolder, 
@@ -76,8 +82,9 @@ test_genomicLocToWholeDNASequence <- function() {
     inputLoci = read.table(inputFile_loci, sep='\t', stringsAsFactors=F, 
         header=T)
 
-    DNASeqNow = genomicLocToWholeDNASequence(inputLoci=inputLoci, 
-        DNAfastaFile=DNAfastaFile)
+    tmpFolder = tempdir();
+    DNASeqNow = genomicLocsToWholeDNASequence(inputLoci=inputLoci, 
+        DNAfastaFile=DNAfastaFile, tempFolder=tmpFolder)
 
     kk = as.character(DNASeqNow[,ncol(DNASeqNow)])
 

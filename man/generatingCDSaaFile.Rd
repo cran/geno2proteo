@@ -87,7 +87,7 @@ Yaoyong Li
     DNAfastaFile =  file.path(dataFolder, 
             "Homo_sapiens.GRCh37.74.dna.chromosome.16.fa_theFirst3p5M.txt.gz")
     
-    outputFolder = "./"; # using the current folder as output folder
+    outputFolder = tempdir(); # using the current folder as output folder
     # calling the function.
     generatingCDSaaFile(geneticCodeFile_line=geneticCodeFile_line, 
         gtfFile=gtfFile, DNAfastaFile=DNAfastaFile, outputFolder=outputFolder)

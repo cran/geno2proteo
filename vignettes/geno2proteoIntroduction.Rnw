@@ -226,9 +226,11 @@ gtfFile_chr16 = file.path(dataFolder,
 DNAfastaFile_chr16 =  file.path(dataFolder, 
 "Homo_sapiens.GRCh37.74.dna.chromosome.16.fa_theFirst3p5M.txt.gz");
 
+tmpFolder = tempdir();
+
 generatingCDSaaFile(geneticCodeFile_line=geneticCodeFile, 
 gtfFile=gtfFile_chr16, DNAfastaFile=DNAfastaFile_chr16, 
-outputFolder="./", perlExec="perl")
+outputFolder=tmpFolder, perlExec="perl")
 @
 
 \normalsize
@@ -280,7 +282,7 @@ the parameters and the output of each function.
 
 \begin{enumerate}
 
-\item \Rfunction{genomicLocToProteinSequence} takes a list of genomic regions 
+\item \Rfunction{genomicLocsToProteinSequence} takes a list of genomic regions 
 given in the input and tries to find the protein sequences and DNA sequences 
 of the coding regions of genome which are within those genomic regions. It has
 two parameters:
@@ -318,12 +320,12 @@ and ``dnaAfter".
 \end{itemize}
 
 The following codes illustrate the usage of the function 
-\Rfunction{genomicLocToProteinSequence} by using the CDSs data file generated 
+\Rfunction{genomicLocsToProteinSequence} by using the CDSs data file generated 
 by the codes in Section \ref{sectDataFiles} and some genomic loci defined by 
 their coordinates.
 
 \small
-<<example_genomicLocToProteinSequence, eval=TRUE>>=
+<<example_genomicLocsToProteinSequence, eval=TRUE>>=
 library(geno2proteo)
 
 dataFolder = system.file("extdata", package="geno2proteo")
@@ -338,7 +340,7 @@ inputLoci = read.table(inputFile_loci, sep='\t', stringsAsFactors=FALSE,
     header=TRUE)
 inputLoci = inputLoci[,1:4] # here just use the first 4 columns of input data. 
 # But the input data can have as many extra columns as you like.
-proteinSeq = genomicLocToProteinSequence(inputLoci=inputLoci, 
+proteinSeq = genomicLocsToProteinSequence(inputLoci=inputLoci, 
 CDSaaFile=CDSaaFile)
 # the 1st and 5th genomic loci in the input
 inputLoci[c(1,5),] 
@@ -348,9 +350,9 @@ proteinSeq[c(1,5),]
 @
 
 \normalsize
-\item \Rfunction{genomicLocToWholeDNASequence} takes a list of genomic regions
+\item \Rfunction{genomicLocsToWholeDNASequence} takes a list of genomic regions
 and tries to find the DNA sequences of those genomic regions. Note that, as 
-explained above, another function \Rfunction{genomicLocToProteinSequence} 
+explained above, another function \Rfunction{genomicLocsToProteinSequence} 
 returns the DNA sequences of the coding regions in the given genomic regions. 
 In contrast, this function returns the whole DNA sequences of the genomic 
 regions specified. This function has four parameters:
@@ -358,7 +360,7 @@ regions specified. This function has four parameters:
 \begin{itemize}
 \item \Robject{inputLoci}: a data frame which has exactly the same format as 
 the parameter ``inputLoci" of the function 
-\Rfunction{genomicLocToProteinSequence}, which has been explained in the above.
+\Rfunction{genomicLocsToProteinSequence}, which has been explained in the above.
 \item \Robject{DNAfastaFile}: the name of the DNA sequence file for the whole 
 genome, which has been described in Section \ref{sectDataFiles} .
 \item \Robject{tempFolder}: a temporary folder into which the program can write
@@ -374,12 +376,12 @@ after them, one added column for the DNA sequence of the corresponding
 genomic locus.
 
 The following codes illustrate the usage of the function 
-\Rfunction{genomicLocToWholeDNASequence} by using the CDSs data file generated
+\Rfunction{genomicLocsToWholeDNASequence} by using the CDSs data file generated
 by the codes in Section \ref{sectDataFiles} and some genomic loci defined by 
 their coordinates.
 
 \small
-<<example_genomicLocToWholeDNASequence, eval=TRUE>>=
+<<example_genomicLocsToWholeDNASequence, eval=TRUE>>=
 library(geno2proteo)
 
 dataFolder = system.file("extdata", package="geno2proteo")
@@ -392,8 +394,9 @@ inputLoci = read.table(inputFile_loci, sep='\t', stringsAsFactors=FALSE,
     header=TRUE)
 inputLoci = inputLoci[,1:4] # here just use the first 4 columns of input data. 
 # But the input data can have as many extra columns as you like.
-DNASeqNow = genomicLocToWholeDNASequence(inputLoci=inputLoci, 
-    DNAfastaFile=DNAfastaFile, tempFolder="./", perlExec="perl")
+tmpFolder = tempdir();
+DNASeqNow = genomicLocsToWholeDNASequence(inputLoci=inputLoci, 
+    DNAfastaFile=DNAfastaFile, tempFolder=tmpFolder, perlExec="perl")
 
 inputLoci[c(1,5),] # the 1st and 5th genomic loci in the input
 
@@ -410,7 +413,7 @@ some non-coding regions, the whole DNA sequence of the locus will be
 different from the DNA sequence of the coding regions within the locus. 
 %\vspace{0.1cm}
 %Note that Perl is needed to run the function 
-%\Rfunction{genomicLocToWholeDNASequence}.
+%\Rfunction{genomicLocsToWholeDNASequence}.
 
 
 \item \Rfunction{proteinLocsToGenomic} obtains the genomic coordinates for a 
@@ -432,7 +435,7 @@ section on the protein sequence). Other columns are optional and will not be
 used by the function. 
 
 \item \Robject{CDSaaFile}: the same data file as the one used in the function 
-\Rfunction{genomicLocToProteinSequence}. 
+\Rfunction{genomicLocsToProteinSequence}. 
 \end{itemize}
 
 The function returns a data frame containing the original protein sections 

@@ -1,4 +1,4 @@
-genomicLocToWholeDNASequence <-
+genomicLocsToWholeDNASequence <-
     function(inputLoci, DNAfastaFile, tempFolder='./', perlExec='perl') {
 
     scriptFolder= system.file("exec", package="geno2proteo")
