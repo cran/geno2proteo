@@ -75,9 +75,15 @@ generatingCDSaaFile <- function(geneticCodeFile_line, gtfFile, DNAfastaFile,
                     filenamePrefix, '_CDS_transcript_DNAseq.txt', sep='');
     DNAfastaFile00 = DNAfastaFile
     # uncompress the fasta file, not remove the compressed
-    if(grepl('\\.gz$', DNAfastaFile)[1]) {
-        R.utils::gunzip(DNAfastaFile, remove=FALSE) 
-        DNAfastaFile = sub('\\.gz$','', DNAfastaFile)
+    if(grepl('\\.gz$', DNAfastaFile)[1]) { 
+        #R.utils::gunzip(DNAfastaFile, remove=FALSE)
+        #DNAfastaFile = sub('\\.gz$','', DNAfastaFile)
+        destName=paste(outputFolder, '/', 
+                    sub('.gz$', '', sub('.*\\/', '', DNAfastaFile)), sep='')
+        R.utils::decompressFile(filename=DNAfastaFile, destname=destName, 
+                                ext='gz', FUN=gzfile, remove=FALSE)
+        DNAfastaFile = destName;
+        
     }
     # using the double quotation to address the problem associate with blank
     # spaces in the command.

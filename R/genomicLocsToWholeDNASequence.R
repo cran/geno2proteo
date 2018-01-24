@@ -36,8 +36,13 @@ genomicLocsToWholeDNASequence <-
     DNAfastaFile00 = DNAfastaFile
     # uncompress the fasta file, not remove the compressed
     if(grepl('\\.gz$', DNAfastaFile)[1]) {
-        R.utils::gunzip(DNAfastaFile, remove=FALSE)
-        DNAfastaFile = sub('\\.gz$','', DNAfastaFile)
+        #R.utils::gunzip(DNAfastaFile, remove=FALSE)
+        #DNAfastaFile = sub('\\.gz$','', DNAfastaFile)
+        destName=paste(tempFolder, '/', 
+                    sub('.gz$', '', sub('.*\\/', '', DNAfastaFile)), sep='')
+        R.utils::decompressFile(filename=DNAfastaFile, destname=destName, 
+                                ext='gz', FUN=gzfile, remove=FALSE)
+        DNAfastaFile = destName;
     }
     
     command = paste('"', perlExec, '" "', perlScript_getDNAseq, '" "', 

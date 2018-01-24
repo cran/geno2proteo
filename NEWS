@@ -1,3 +1,11 @@
+CHANGES IN VERSION 0.0.3 (24/01/2018)
+-------------------------
+1. As the version 0.0.2 did not solve the issue of creating and writting some 
+files in the folders that they should not be created, more modifications were done
+in this version, namely putting the DNA sequence file uncompressed from the 
+gz file to the temporary folder.
+
+
 CHANGES IN VERSION 0.0.2 (23/01/2018)
 -------------------------
 1. Changed the function names of the two functions: genomicLocToProteinSequence 
@@ -7,7 +15,7 @@ function names.
 2. Removed "utils" from the import list in DESCRIPTION file, because it is not
  used by the package.
 3. Addressed the issue of creating and writting some files in the folders that
- they should be created, as raised by the CRAN staff, by using the temporary
+ they should not be created, as raised by the CRAN staff, by using the temporary
  folder obtained by tempdir(). 
 
 -------------------------
