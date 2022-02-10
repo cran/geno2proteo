@@ -245,7 +245,7 @@ human genome and is in the current folder.
 The package implements four functions to try to answer some basic and yet 
 important questions in genomic and proteomic areas. Before describing those 
 functions in detail, I would like to explain the formats that this package 
-uses to define the genomic locus and the protein section, which are the input 
+uses to define the genomic locus and the protein region, which are the input 
 of these functions.
 
 \vspace{0.1cm}
@@ -438,14 +438,14 @@ used by the function.
 \Rfunction{genomicLocsToProteinSequence}. 
 \end{itemize}
 
-The function returns a data frame containing the original protein sections 
+The function returns a data frame containing the original protein regions 
 specified in the input and before them, the six added columns for the genomic 
-positions of the protein sections:
+positions of the protein regions:
 
 \begin{itemize}
 \item The 1st, 2nd, 3rd and 4th columns give the chromosome name, start and 
 end positions, and strand in the chromosome, which specify the genomic locus 
-corresponding to the protein section.
+corresponding to the protein region.
 \item The 5th and 6th columns give the first and last exons in the context 
 of coding exons in the transcript which correspond to the given protein 
 section. 
@@ -472,9 +472,9 @@ header=TRUE)
 
 genomicLoci = proteinLocsToGenomic(inputLoci=inputLoci, CDSaaFile=CDSaaFile)
 
-inputLoci[c(1,5),] # the 1st and 5th protein sections in the input data
+inputLoci[c(1,5),] # the 1st and 5th protein regions in the input data
 
-genomicLoci[c(1,5),] # the genomic locations of these protein sections
+genomicLoci[c(1,5),] # the genomic locations of these protein regions
 
 # then using the ENSEMBL transcript ID to specify the proteins
 inputFile_loci=file.path(dataFolder, 
@@ -483,9 +483,9 @@ inputLoci = read.table(inputFile_loci, sep='\t', stringsAsFactors=FALSE,
 header=TRUE)
 genomicLoci = proteinLocsToGenomic(inputLoci=inputLoci, CDSaaFile=CDSaaFile)
 
-inputLoci[c(1,5),] # the 1st and 5th protein sections in the input data
+inputLoci[c(1,5),] # the 1st and 5th protein regions in the input data
 
-genomicLoci[c(1,5),] # the genomic locations of these protein sections
+genomicLoci[c(1,5),] # the genomic locations of these protein regions
 
 @
 
@@ -498,9 +498,9 @@ themselves for a list of sections in proteins specified by the coordinates
 of the sections along the proteins. It has the same two parameters as the 
 function \Rfunction{proteinLocsToGenomic}, which has been explained above.
 
-The function returns a data frame containing the original protein sections 
+The function returns a data frame containing the original protein regions 
 specified in the input and after them, the added column for the amino acid 
-sequences of the protein sections.
+sequences of the protein regions.
 
 The following codes illustrate the usage of the function 
 \Rfunction{proteinLocsToProteinSeq} by using the CDSs data file generated 
@@ -523,9 +523,9 @@ header=TRUE)
 
 ProtSeqNow = proteinLocsToProteinSeq(inputLoci=inputLoci, CDSaaFile=CDSaaFile)
 
-inputLoci[c(1,5),] # the 1st and 5the protein sections in the input data
+inputLoci[c(1,5),] # the 1st and 5the protein regions in the input data
 
-ProtSeqNow[c(1,5),] # the protein sequences of these protein sections
+ProtSeqNow[c(1,5),] # the protein sequences of these protein regions
 
 @
 

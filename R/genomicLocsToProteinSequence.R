@@ -1,5 +1,4 @@
-genomicLocsToProteinSequence <-
-    function(inputLoci, CDSaaFile) {
+genomicLocsToProteinSequence <- function(inputLoci, CDSaaFile) {
 
     loci_0 = inputLoci
     if(!is.data.frame(loci_0)) {
@@ -38,6 +37,15 @@ genomicLocsToProteinSequence <-
     kkt1 = S4Vectors::queryHits(kk)
     kkt2 = S4Vectors::subjectHits(kk)
     kk01 = cbind(kkt1,kkt2)
+    
+    if(length(kkt1) == 0) { 
+       kk = rep(NA, nrow(loci)*5)
+       kk = t(matrix(kk, nrow=5))
+       colnames(kk) = c('transId', 'dnaSeq', 'dnaBefore', 'dnaAfter',  'pepSeq')
+       loci_re = cbind(loci, kk)
+       return(loci_re) 
+    } #return a NULL if there is no overlapping.
+    
     # for each locus, the index of overlapping CDS,  kk0004330[[n]]
     kk02 = tapply(kk01[,2], kk01[,1], sort) 
     # the index of the loci in the overlapping  
@@ -119,7 +127,9 @@ genomicLocsToProteinSequence <-
             kkt03 = ceiling(nchar(dna2St)/ 3) 
             # get the end of the AA in the current AA sequence. Note not 
             # using the end base if it have to borrow bases after it.
-            kkt04 = floor(nchar(dna2End)/ 3) 
+            #kkt04 = floor(nchar(dna2End)/ 3) 
+            #if using the end base
+            kkt04 = ceiling(nchar(dna2End)/ 3) 
             
             AAseqNow[ind] = substr(exonsNow[ind,12], kkt03, kkt04)
         }

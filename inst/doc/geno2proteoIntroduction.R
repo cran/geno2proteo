@@ -100,9 +100,9 @@ header=TRUE)
 
 genomicLoci = proteinLocsToGenomic(inputLoci=inputLoci, CDSaaFile=CDSaaFile)
 
-inputLoci[c(1,5),] # the 1st and 5th protein sections in the input data
+inputLoci[c(1,5),] # the 1st and 5th protein regions in the input data
 
-genomicLoci[c(1,5),] # the genomic locations of these protein sections
+genomicLoci[c(1,5),] # the genomic locations of these protein regions
 
 # then using the ENSEMBL transcript ID to specify the proteins
 inputFile_loci=file.path(dataFolder, 
@@ -111,9 +111,9 @@ inputLoci = read.table(inputFile_loci, sep='\t', stringsAsFactors=FALSE,
 header=TRUE)
 genomicLoci = proteinLocsToGenomic(inputLoci=inputLoci, CDSaaFile=CDSaaFile)
 
-inputLoci[c(1,5),] # the 1st and 5th protein sections in the input data
+inputLoci[c(1,5),] # the 1st and 5th protein regions in the input data
 
-genomicLoci[c(1,5),] # the genomic locations of these protein sections
+genomicLoci[c(1,5),] # the genomic locations of these protein regions
 
 
 
@@ -133,9 +133,9 @@ header=TRUE)
 
 ProtSeqNow = proteinLocsToProteinSeq(inputLoci=inputLoci, CDSaaFile=CDSaaFile)
 
-inputLoci[c(1,5),] # the 1st and 5the protein sections in the input data
+inputLoci[c(1,5),] # the 1st and 5the protein regions in the input data
 
-ProtSeqNow[c(1,5),] # the protein sequences of these protein sections
+ProtSeqNow[c(1,5),] # the protein sequences of these protein regions
 
 
 

@@ -18,7 +18,8 @@ my $outputFile = $ARGV[2]; #the output file
  open DOC, $geneticCodesFile or die "Cannot open the file$geneticCodesFile\n";
  my $num=1;
  while(<DOC>) {
-   chomp;
+   s/[\r\n]+//; #chomp;
+   
    my @items = split/[\t ]+/;
    #$items[1] = 9 if($items[1] eq '*');
    $geneticCodes{$items[0]} = $items[1];
@@ -40,8 +41,7 @@ my $outputFile = $ARGV[2]; #the output file
  my $numExons=0;
  
  while(<DOC>) {
-   chomp;
-   
+   s/[\r\n]+//; #chomp;
    my @items = split/[\t ]+/;
    my $lastItem = scalar @items;
    $lastItem -= 1;

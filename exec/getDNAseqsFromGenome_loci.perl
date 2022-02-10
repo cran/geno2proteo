@@ -30,7 +30,7 @@ my $dnaSeq = '';
 my $num=0;
 while(<DOC>) {
  ++$num;
- chomp;
+ s/[\r\n]+//; #chomp;
  if(/^>([^ ]+) /) {
    #print "$num $_\n" ;
    if($dnaSeq ne '') {
@@ -69,7 +69,8 @@ my @lociStr;
 my @lociNames;
 my @bedLines;
 while(<DOC>) {
-  chomp;
+  s/[\r\n]+//; #chomp;
+  
   $bedLines[$numLoci] = $_;
   my @terms = split/[\t ]+/;
   

@@ -28,6 +28,9 @@ proteinLocsToGenomic <- function(inputLoci, CDSaaFile) {
     }
     # get the loci in the list that are in the data with protein sequence.
     loci = loci_0[loci_0[,1]%in% exonsPep_0[,5],] 
+    if(nrow(loci)==0) {
+        return("there is no valid loci!!")
+    }
     # get the protein sequence of the transcripts which are in the loci.
     exonsPep = exonsPep_0[exonsPep_0[,5] %in% loci[,1],] 
 

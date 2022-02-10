@@ -1,3 +1,26 @@
+CHANGES IN VERSION 0.0.5 (06/02/2022)
+-------------------------
+1. Added the code in the function genomicLocsToProteinSequence() to deal
+with the case that there is no overlap between the input genomic loci and the
+protein coding genes, by returning a data frame with the genomic regions and 
+result columns filled with NAs, instead of a short message.
+2. Still in the function genomicLocsToProteinSequence(), it now outputs all the amino
+acids coded by the DNA bases. In the previous version it did not output the amino acid coded 
+by the last DNA bases if it needs some more DNA base after the current DNA sequences, which
+looks not that intuitive.
+3. Updated the introduction document (vignette) of the package.
+4. Fixed an error caused by a new toolchain on Windows in which Perl installed on the system 
+does not automatically convert newlines on input to LF. The fix method had been
+proposed by the maintainers of CRAN repository who encountered the issue at the first place,
+which was to replace all the "chomp;" in the two Perl scripts by "s/[\r\n]+//;".
+
+
+CHANGES IN VERSION 0.0.4 (28/05/2018)
+-------------------------
+1. Added the code in the function genomicLocsToProteinSequence() to deal
+with the case that there is no overlap between the input genomic loci and the
+protein coding genes.  
+
 CHANGES IN VERSION 0.0.3 (24/01/2018)
 -------------------------
 1. As the version 0.0.2 did not solve the issue of creating and writting some 
@@ -22,6 +45,6 @@ function names.
 
 VERSION 0.0.1
 
-12/12/2017:the package was accepted and published by CRAN repository.
+12/12/2017: the package was accepted and published by CRAN repository.
 September - November 2017: the package was tested and reviewed.
 January - May 2017: the package was written.
