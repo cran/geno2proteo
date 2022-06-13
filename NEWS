@@ -1,3 +1,17 @@
+CHANGES IN VERSION 0.0.6 (10/06/2022)
+-------------------------
+1. Added the code in the function proteinLocsToProteinSeq() to deal
+with the case that the input file contains some protein ID(s) which are not
+in the gene annotation file and hence are not in the CDSaaFile used by the 
+function. Accordingly, added one row at the end of the test data file
+of the function
+ transId_pfamDomainStartEnd_chr16_Zdomains_22examples_proteinID.txt 
+for one protein ID which is not in any CDSaaFile in order to test the 
+added code.
+2. Made one change in the document Vignettes (in Section 1) to state that the 
+package is in the CRAN repository.  
+
+
 CHANGES IN VERSION 0.0.5 (06/02/2022)
 -------------------------
 1. Added the code in the function genomicLocsToProteinSequence() to deal

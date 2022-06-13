@@ -21,6 +21,7 @@ proteinLocsToProteinSeq <-
         idCol=kk[idCol]
     }
     kk = sapply(1:length(idCol), function(n) grepl(idCol[n], idColNow[n])[1])
+    kk[is.na(kk)] = F #set the protein not in the CDSaa file as false
     kkt = proteinSeq[kk,]
 
     kk = apply(inputLoci, 1, function(a) paste(gsub(' ', '', a), collapse='_'))

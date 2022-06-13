@@ -86,17 +86,25 @@ scripts provided in this package, Perl needs to be installed in the computer
 in which you want to use this package.
 
 \vspace{0.1cm}
-The package \Rpackage{geno2proteo} is available at bioconductor.org
-and can be downloaded via \Rfunction{biocLite}.
+%The package \Rpackage{geno2proteo} is available at bioconductor.org
+%and can be downloaded via \Rfunction{biocLite}.
 
-\small
-<<biocLite, eval=FALSE>>=
-source("http://bioconductor.org/biocLite.R")
-biocLite("geno2proteo")
-@
+%\small
+%<<biocLite, eval=FALSE>>=
+%source("http://bioconductor.org/biocLite.R")
+%biocLite("geno2proteo")
+%@
 %<<initialize, results=hide>>=
 %library(geno2proteo)
 %@
+The package \Rpackage{geno2proteo} is available at one of the main R package 
+repositories, CRAN (https://CRAN.R-project.org/package=geno2proteo) 
+and can be installed via the usual R package installation methods, e.g.
+
+\small
+<<installPackage, eval=FALSE>>=
+install.packages("geno2proteo")
+@
 
 \normalsize
 \section{The data files needed by the package \Rpackage{geno2proteo}}  

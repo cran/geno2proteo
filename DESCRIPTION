@@ -2,8 +2,8 @@ Package: geno2proteo
 Type: Package
 Title: Finding the DNA and Protein Sequences of Any Genomic or
         Proteomic Loci
-Version: 0.0.5
-Date: 2022-02-06
+Version: 0.0.6
+Date: 2022-06-10
 Author: Yaoyong Li 
 Maintainer: Yaoyong Li<liyaoyong85@gmail.com>
 biocViews: Genetics, Proteomics, Sequencing, Annotation,
@@ -21,6 +21,6 @@ Imports: S4Vectors, BiocGenerics, GenomicRanges, IRanges, R.utils,
 SystemRequirements: Perl (>= 2.0.0)
 LazyLoad: yes
 NeedsCompilation: no
-Packaged: 2022-02-10 15:10:25 UTC; mdehsyl2
+Packaged: 2022-06-13 10:12:17 UTC; mdehsyl2
 Repository: CRAN
-Date/Publication: 2022-02-10 15:50:02 UTC
+Date/Publication: 2022-06-13 10:40:02 UTC

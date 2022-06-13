@@ -7,10 +7,9 @@ options(width=72)
 
 
 ###################################################
-### code chunk number 2: biocLite (eval = FALSE)
+### code chunk number 2: installPackage (eval = FALSE)
 ###################################################
-## source("http://bioconductor.org/biocLite.R")
-## biocLite("geno2proteo")
+## install.packages("geno2proteo")
 
 
 ###################################################

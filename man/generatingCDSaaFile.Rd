@@ -20,7 +20,7 @@ outputFolder = "./", perlExec='perl')
 A text file containing a genetic coding table of the codons and the amino acids
 coded by those codons. A file containing the standard genetic coding table is 
 provided in this package, which is the file
-"geneticCode\_standardTable\_lines.txt" 
+\sQuote{geneticCode_standardTable_lines.txt} 
 in the folder "geno2proteo/extdata/" which will be located in the folder that
 you install the package. This will be 
 available after you have installed the package. 
@@ -69,7 +69,7 @@ will be used by some of other functions in this packages.
 This function does not return any specific value but generates a file in the 
 output folder containing the DNA and AA sequences of the CDS regions. The first
 part of the name of the result file is same as the gene annotation file 
-(namely the gtf file), and the last part is `\_AAseq.txt.gz'. 
+(namely the gtf file), and the last part is \sQuote{_AAseq.txt.gz}. 
 }
 
 \author{
